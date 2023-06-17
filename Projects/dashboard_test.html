@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang = "en" dir ="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Team list </title>
+        <link rel ="stylesheet" href ="homepage.css">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    </head>
+    <body>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="homepage.html">Project Backlog</a></li>
+              <li><a class="menu__item" href="sprintBacklog.html">Sprint Backlog</a></li>
+              <li><a class="menu__item" href="#">Team List</a></li>
+
+            </ul>
+          </div>
+        <h1 align="center">
+            Team List
+        </h1>
+      </div>
+      <div class = "row">
+        <div class = "triple-column">
+        </div>
+        <div class = "triple-column" id="team-list-container">
+          <div class = "team-card">
+              <div class = "team-container">
+                Name Surname
+                <button type="button" class = "delete-member-button">Delete</button>
+                <button type="button" class = "analytics-button" onclick="openAnalytics()">Analytics</button>
+              </div>
+          </div>
+        </div>
+        <div class = "triple-column">
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="button" class="add-task-button" onclick="openAddPeson()">Add person</button>
+        <button type="button" class="burndown-button">Dashboard</button>
+      </div>
+
+      <div class="details-popup" id="analytics-popup">
+        <div class="details-container">
+
+          <div class="row">
+            <div class = "single-column">
+              <span class="exit-button" onclick = "closeAnalytics()">&times;</span>
+              <h2 style = "padding-left: 10px;">Analytics</h2>
+            </div>
+            <div class = "single-column">
+              <h3 style = "padding-left: 10px;"> Sprint name - Name Surname</h3>
+            </div>
+            <div class = "single-column">
+              <canvas id="team-member-analytics" style="width:100%;max-width:500px"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-task-popup" id="add-person">
+        <form action="" class="popup-container">
+
+          <h2 style = "padding-left: 10px;">Add team member</h2>
+
+          <div class="row">
+            <div class="double-column">
+              <label for="full-name"><b>Full name</b></label>
+              <input type="text" placeholder="Enter full name" name="full-name" id="full-name" required>
+            </div>
+            <div class="double-column">
+              <label for="email-address"><b>Email</b></label>
+              <br><br>
+              <input type="email" placeholder="Enter email" name="email-address" id="email-address" required>
+            </div>
+          </div>
+
+         
+        </form>
+      </div>
+
+      <script>
+        function openAddPeson() {
+          document.getElementById("add-person").style.display = "block";
+        }
+
+        function closeAddPeson() {
+          document.getElementById("add-person").style.display = "none";
+        }
+
+        function openAnalytics() {
+          document.getElementById("analytics-popup").style.display = "block";
+        }
+
+        function closeAnalytics() {
+          document.getElementById("analytics-popup").style.display = "none";
+        }
+
+        var xval = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"];
+        var yval = [5, 0, 4, 2, 7];
+
+        new Chart("team-member-analytics", {
+          type: "bar",
+          data: {
+            labels: xval,
+            datasets: [{
+              data: yval
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "THIS IS AN EXAMPLE - REPLACE IT"
+            }
+          }
+        });
+      </script>
+      <script src="member.js"></script>
+      <script src="addmember.js"></script>
+      <script src="fillTeamList.js"></script>
+    </body>
+</html>

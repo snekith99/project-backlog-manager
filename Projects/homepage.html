@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang = "en" dir ="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Project Backlog </title>
+        <link rel ="stylesheet" href ="homepage.css">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet'>
+
+    </head>
+    <body>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="homepage.html">Project Backlog</a></li>
+              <li><a class="menu__item" href="sprintBacklog.html">Sprint Backlog</a></li>
+              <li><a class="menu__item" href="team-list.html">Team List</a></li>
+
+            </ul>
+          </div>
+        <h1 align="center">
+            PROJECT BACKLOG
+        </h1>
+      </div>
+
+      <div class = "filter-position">
+        <label for="task-filter"><b>Filter by: </b></label>
+        <select name = "task-filter" id = "task-filter" onchange="changeFilter()">
+          <option value="none">None</option>
+          <option value="core">Core</option>
+          <option value="testing">Testing</option>
+          <option value="ui">UI</option>
+        </select>
+      </div>
+
+      <div id="grid-container">
+          </div>
+      </div>
+          <button class="add-task-button" onclick="openAdd()">Add task</button>
+
+          <div class="add-task-popup" id="AddTaskPopup">
+            <form action="" class="popup-container">
+
+              <h2 style = "padding-left: 10px;">Add a task</h2>
+
+              <div class="row">
+                <div class="single-column">
+                  <label for="task-name"><b>Task name</b></label>
+                  <input type="text" placeholder="Enter task name" name="task-name" id="task-name" required>
+                  <label for="task-assignee"><b>Assignee</b></label>
+                  <select name="task-assignee" id="task-assignee">
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <label for="task-story-points"><b>Story points</b></label>
+                  <input type="number" placeholder="Enter story points" name="task-story-points" id="task-story-points" required>
+                  <br><br>
+                  <label for="task-type"><b>Type</b></label>
+                  <select name = "task-type" id = "task-type">
+                    <option value="story">Story</option>
+                    <option value="bug">Bug</option>
+                  </select>
+                  <br>
+                </div>
+                <div class="double-column">
+                  <label for="task-priority"><b>Priority</b></label>
+                  <select name = "task-priority" id = "task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="critical">Critical</option>
+                  </select>
+                  <br><br><br>
+                  <label for="task-status"><b>Status</b></label>
+                  <select name = "task-status" id = "task-status">
+                    <option value="not-started">Not started</option>
+                    <option value="in-progress">In progress</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="single-column">
+                  <label for="task-description"><b>Description</b></label>
+                  <textarea style ="font-family: Arial, Helvetica, sans-serif;" cols="45" rows="5" placeholder="Enter description" name="task-description" id="task-description" required></textarea>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="single-column">
+                  <b>Tags</b><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="tag1" name="tag" value="core">
+                  <label for="tag1"> Core</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="tag2" name="tag" value="testing">
+                  <label for="tag2"> Testing</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="tag3" name="tag" value="ui">
+                  <label for="tag3"> UI</label><br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <button type="submit" class="add-button" onclick="confirmAdd()">Add task</button>
+                </div>
+                <div class="double-column">
+                  <button type="button" class="cancel-button" onclick="cancelAdd()">Cancel</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div id= "task-details" class = "details-popup">
+            <div class = "details-container">
+              <div class="row">
+                <div class="single-column">
+                  <span class="exit-button" onclick = "closeDetails()">&times;</span>
+                  <h2>Task details</h2>
+                  <p id="details-taskName"></p>
+                  <p id="details-assignee"></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <p id="details-storyPoints"></p>
+                  <label for="task-type"><b>Type</b></label>
+                  <select name = "task-type" id = "details-type">
+                    <option value="story" disabled>Story</option>
+                    <option value="bug" disabled >Bug</option>
+                  </select>
+                </div>
+                <div class="double-column">
+                  <br>
+                  <label for="task-priority"><b>Priority</b></label>
+                  <select name = "task-priority" id = "details-priority">
+                    <option value="low" disabled>Low</option>
+                    <option value="medium" disabled>Medium</option>
+                    <option value="high" disabled>High</option>
+                    <option value="critical" disabled>Critical</option>
+                  </select>
+                  <br><br>
+                  <label for="task-status"><b>Status</b></label>
+                  <select name = "task-status" id = "details-status">
+                    <option value="not-started" disabled>Not started</option>
+                    <option value="in-progress" disabled >In progress</option>
+                    <option value="completed" disabled>Completed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="single-column">
+                  <p id="details-description"></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class = "single-column">
+                  <b>Tags</b><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="details-tag1" name="details-tag" disabled>
+                  <label for="tag1"> Core</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="details-tag2" name="details-tag" disabled>
+                  <label for="tag2"> Testing</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="details-tag3" name="details-tag" disabled>
+                  <label for="tag2"> UI</label><br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <button type="button" class="edit-button" onclick="openEdit()">Edit</button>
+                </div>
+                <div class="double-column">
+                  <button type="button" class="delete-button" onclick="deleteTask()">Delete</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div id= "edit-task-details" class = "details-popup">
+            <div class = "details-container">
+              <div class="row">
+                <div class="single-column">
+                  <h2>Edit task</h2>
+                  <p><strong>Task name</strong>:</p><p contentEditable="true" id="edit-taskName" class = "border-text"></p>
+                  <label for="edit-assignee"><b>Assignee</b></label>
+                  <select name = "task-assignee" id = "edit-assignee">
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <p><strong>Story points</strong>:</p><p contentEditable="true" type="number" id="edit-storyPoints" class = "border-text"></p>
+                  <label for="task-type"><b>Type</b></label>
+                  <select name = "task-type" id = "edit-taskType">
+                    <option value="story">Story</option>
+                    <option value="bug">Bug</option>
+                  </select>
+                </div>
+                <div class="double-column">
+                  <br>
+                  <label for="task-priority"><b>Priority</b></label>
+                  <select name = "task-priority" id = "edit-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="critical">Critical</option>
+                  </select>
+                  <br><br>
+                  <label for="task-status"><b>Status</b></label>
+                  <select name = "task-status" id = "edit-taskStatus">
+                    <option value="not-started">Not started</option>
+                    <option value="in-progress">In progress</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="single-column">
+                  <p><strong>Description</strong>:</p><p contentEditable="true" id="edit-description" class = "border-text"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="single-column">
+                  <b>Tags</b><br>
+                <div class="triple-column">
+                  <input type="radio" id="edit-tag1" name="edit-tag" value="core">
+                  <label for="tag1"> Core</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="edit-tag2" name="edit-tag" value="testing">
+                  <label for="tag2"> Testing</label><br>
+                </div>
+                <div class="triple-column">
+                  <input type="radio" id="edit-tag3" name="edit-tag" value="ui">
+                  <label for="tag2"> UI</label><br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="double-column">
+                  <button type="button" class="edit-button" onclick="editTask()">Save</button>
+                </div>
+                <div class="double-column">
+                  <button type="button" class="delete-button" onclick="closeEdit()">Cancel</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <script src="Task.js"></script>
+          <script src="addTask.js"></script>
+          <script src="fillGrid.js"></script>
+          <script src="openDetails.js"></script>
+          <script src="deleteTask.js"></script>
+          <script src="editTask.js"></script>
+          <script src="member.js"></script>
+          <script src="assigneeList.js"></script>
+</body>
+</html>

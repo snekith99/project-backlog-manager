@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang = "en" dir ="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Current Sprint </title>
+        <link rel ="stylesheet" href ="homepage.css">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet'>
+
+    </head>
+    <body>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="homepage.html">Project Backlog</a></li>
+              <li><a class="menu__item" href="sprintBacklog.html">Sprint Backlog</a></li>
+              <li><a class="menu__item" href="team-list.html">Team List</a></li>
+
+            </ul>
+          </div>
+        <h1 align="center">
+            CURRENT SPRINT
+        </h1>
+      </div>
+      <div class = "row">
+        <div class = "not-started-column" id = "not-started-column">
+            <h2 align="center"> Not Started </h2>
+        </div>
+        <div class = "in-progress-column" id = "in-progress-column">
+            <h2 align="center"> In progress </h2>
+        </div>
+        <div class = "completed-column" id = "completed-column">
+            <h2 align="center"> Completed </h2>
+        </div>
+      </div>
+
+      <div class="details-popup" id="TaskViewPopup">
+        <div class="details-container">
+
+          <div class="row">
+            <div class = "single-column">
+              <span class="exit-button" onclick = "closeTaskView()">&times;</span>
+              <h2 style = "padding-left: 10px;">Task view</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "single-column">
+              <label for="task-state"><b>State: </b></label>
+              <select name = "task-state" id = "task-state">
+                <option value="not-started">Not started</option>
+                <option value="in-progress">In progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <br><br>
+            <div class="single-column">
+              <label for="log-date"><b>Log date: </b></label>
+              <input type="date" name="log-date" id="log-date" required>
+            </div>
+            <br><br>
+            <div class="single-column">
+              <label for="log-time"><b>Log time (mins): </b></label>
+              <input type="number" name="log-time" id="log-time" required>
+            </div>
+            <br><br>
+            <div class = "single-column">
+              <label for="total-time"><b>Total logged time (mins): </b></label>
+              <input type="number" name="total-time" id="total-time" disabled>
+            </div>
+            <br><br>
+          </div>
+
+          <div class="row">
+            <div class="triple-column"></div>
+            <div class="triple-column"></div>
+            <div class="triple-column">
+              <button type="submit" class="edit-button" onclick="editSprint()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="button" class="burndown-button"onclick="openBurndown()">Burndown</button>
+        <button type="button" class="complete-button" id="complete-sprint-button" onclick="completeSprint()">Complete</button>
+      </div>
+
+      <div class="details-popup" id="burndown-popup">
+        <div class="details-container">
+
+          <div class="row">
+            <div class = "single-column">
+              <span class="exit-button" onclick = "closeBurndown()">&times;</span>
+              <h2 style = "padding-left: 10px;">Burndown Chart</h2>
+            </div>
+            <div class = "single-column">
+            </div>
+            <div class = "single-column">
+              <canvas id="burndown-chart" style="width:100%;max-width:500px"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+
+        function closeBurndown() {
+          document.getElementById("burndown-popup").style.display = "none";
+        }
+
+      </script>
+
+      <script src="Sprint.js"></script>
+      <script src="Task.js"></script>
+      <script src="member.js"></script>
+      <script src="editTaskInSprint.js"></script>
+      <script src="completeSprint.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+      <script src="burndownChart.js"></script>
+
+    </body>
+</html>

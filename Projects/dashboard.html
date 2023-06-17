@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang = "en" dir ="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Team list </title>
+        <link rel ="stylesheet" href ="homepage.css">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    </head>
+    <body>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="homepage.html">Project Backlog</a></li>
+              <li><a class="menu__item" href="sprintBacklog.html">Sprint Backlog</a></li>
+              <li><a class="menu__item" href="team-list.html">Team List</a></li>
+
+            </ul>
+          </div>
+        <h1 align="center">
+            DASHBOARD
+        </h1>
+      </div>
+
+      <div class="dashboardBox">
+        <div class="dashboardCard">
+            <div>
+                <div class = "date" for="start">
+                    <input type="date" id = "start-date" name = "start-date" onchange="runDashboard()">
+
+                </div>
+                <div class="cardname">Start Date</div>
+            </div>
+            <div class ="iconCalendar">
+                <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="dashboardCard">
+            <div>
+                <div class = "date" for="start">
+                    <input type="date" id = "end-date" name = "end-date" onchange="runDashboard()">
+                </div>
+                <div class="cardname">End Date</div>
+            </div>
+            <div class ="iconCalendar"> 
+                <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+        </div>
+      </div>
+
+
+      <div class ="details">
+        <div class ="team-list-details">
+            <div class = "cardHeader">
+                <h2>Team List Details</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Average Work</td>
+                    </tr>
+                </thead>
+                <tbody id="member-list">
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <script src="Sprint.js"></script>
+      <script src="member.js"></script>
+      <script src="dashboard.js"></script>
+      </body>
+    </html>
+      

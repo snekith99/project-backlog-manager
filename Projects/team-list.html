@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang = "en" dir ="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Team list </title>
+        <link rel ="stylesheet" href ="homepage.css">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    </head>
+    <body>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="homepage.html">Project Backlog</a></li>
+              <li><a class="menu__item" href="sprintBacklog.html">Sprint Backlog</a></li>
+              <li><a class="menu__item" href="team-list.html">Team List</a></li>
+
+            </ul>
+          </div>
+        <h1 align="center">
+            TEAM LIST
+        </h1>
+      </div>
+      <div class = "row">
+        <div class = "triple-column">
+        </div>
+        <div class = "triple-column" id="team-list-container">          
+        </div>
+        <div class = "triple-column">
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="button" class="add-person-button" onclick="openAddPeson()">Add person</button>
+        <a href="dashboard.html">
+          <button type="button" class="dashboard-button">Dashboard</button>
+        </a>
+        
+      </div>
+
+      <div class="details-popup" id="analytics-popup">
+        <div class="details-container">
+
+          <div class="row">
+            <div class = "single-column">
+              <span class="exit-button" onclick = "closeAnalytics()">&times;</span>
+              <h2 style = "padding-left: 10px;">Analytics</h2>
+            </div>
+            <div class = "single-column">
+              <h3 style = "padding-left: 10px;" id = "sprint-member-information"></h3>
+            </div>
+            <div class = "single-column">
+              <canvas id="team-member-analytics" style="width:100%;max-width:500px"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-task-popup" id="add-person">
+        <form action="" class="popup-container">
+
+          <h2 style = "padding-left: 10px;">Add team member</h2>
+
+          <div class="row">
+            <div class="double-column">
+              <label for="full-name"><b>Full name</b></label>
+              <input type="text" placeholder="Enter full name" name="full-name" id="full-name" required>
+            </div>
+            <div class="double-column">
+              <label for="email-address"><b>Email</b></label>
+              <br><br>
+              <input type="email" placeholder="Enter email" name="email-address" id="email-address" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="double-column">
+              <button type="submit" class="add-button" onclick="addMember()">Add</button>
+            </div>
+            <div class="double-column">
+              <button type="button" class="cancel-button" onclick="closeAddPeson()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <script>
+        function openAddPeson() {
+          document.getElementById("add-person").style.display = "block";
+        }
+
+        function closeAddPeson() {
+          document.getElementById("add-person").style.display = "none";
+        }
+
+        function openAnalytics(selectedMemberIndex) {
+          localStorage.setItem("selectedMemberIndex", selectedMemberIndex);
+          document.getElementById("analytics-popup").style.display = "block";
+          memberGraph();
+        }
+
+        function closeAnalytics() {
+          document.getElementById("analytics-popup").style.display = "none";
+        }
+
+      </script>
+      <script src="Sprint.js"></script>
+      <script src="member.js"></script>
+      <script src="addmember.js"></script>
+      <script src="deleteMember.js"></script>
+      <script src="fillTeamList.js"></script>
+      <script src="memberAnalytics.js"></script>
+    </body>
+</html>
