@@ -4,7 +4,7 @@
 
 This website manages a project backlog and incorporates moving tasks to sprint backlogs and having a team list. 
 
-In VS code, download "open in brower" extension by the author "TechER"
+In VS code, download "open in browser" extension by the author "TechER"
 
 After downloading this extension, open the Projects directory and right click on the file "homepage.html". 
 
